@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static List<Color> storyColors = [
+    Colors.yellow,
+    Colors.orange,
+    Colors.red,
+    const Color.fromARGB(255, 226, 88, 231),
+    const Color.fromARGB(255, 226, 88, 231),
+  ];
+
   static Color blue = const Color.fromARGB(255, 36, 99, 170);
 
   static Color lightblue = const Color.fromARGB(255, 152, 187, 232);
