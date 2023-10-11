@@ -4,7 +4,7 @@ import 'package:instagram/src/config/constants/app_colors.dart';
 import 'package:instagram/src/config/constants/app_images.dart';
 import 'package:instagram/src/config/text/paragraph.dart';
 
-class UserPosted extends StatelessWidget {
+class UserPosted extends StatefulWidget {
   const UserPosted({
     super.key,
     this.postedImage,
@@ -17,6 +17,19 @@ class UserPosted extends StatelessWidget {
   final String? userImage;
   final String? userName;
   final String? userNickName;
+
+  @override
+  State<UserPosted> createState() => _UserPostedState();
+}
+
+class _UserPostedState extends State<UserPosted> {
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +46,8 @@ class UserPosted extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(userImage ?? AppImage.imageNotFound),
+                        image: AssetImage(
+                            widget.userImage ?? AppImage.imageNotFound),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -44,11 +58,11 @@ class UserPosted extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Paragraph(
-                      content: userName ?? '?',
+                      content: widget.userName ?? '?',
                       fontWeight: FontWeight.bold,
                     ),
                     Paragraph(
-                      content: userNickName ?? '?',
+                      content: widget.userNickName ?? '?',
                       fontSize: 12,
                     ),
                   ],
@@ -58,39 +72,56 @@ class UserPosted extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            height: 400,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(postedImage ?? AppImage.imageNotFound),
-                fit: BoxFit.cover,
+          GestureDetector(
+            onDoubleTap: toggleFavorite,
+            child: Container(
+              height: 400,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      widget.postedImage ?? AppImage.imageNotFound),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-          const SizedBox(height: 7),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.favorite_border_rounded, size: 27),
-                    SizedBox(width: 15),
-                    Icon(Icons.messenger_outline_rounded, size: 27),
-                    SizedBox(width: 15),
-                    Icon(Icons.send_outlined, size: 27),
-                    Spacer(),
-                    Icon(Icons.bookmark_border_rounded, size: 30)
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                  child: Row(
-                    children: [Paragraph(content: '999.999.999 likes')],
+          // const SizedBox(height: 7),
+          Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: toggleFavorite,
+                    icon: isFavorite
+                        ? Icon(
+                            Icons.favorite_rounded,
+                            size: 27,
+                            color: AppColors.pink,
+                          )
+                        : const Icon(
+                            Icons.favorite_border_rounded,
+                            size: 27,
+                          ),
                   ),
+                  const SizedBox(width: 5),
+                  const Icon(Icons.messenger_outline_rounded, size: 27),
+                  const SizedBox(width: 15),
+                  const Icon(Icons.send_outlined, size: 27),
+                  const Spacer(),
+                  const Icon(Icons.bookmark_border_rounded, size: 30)
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 13.0),
+                child: Row(
+                  children: [Paragraph(content: '999.999.999 likes')],
                 ),
-                Row(
+              ),
+              const SizedBox(height: 5),
+              const Padding(
+                padding: EdgeInsets.only(left: 9.0),
+                child: Row(
                   children: [
                     Icon(CupertinoIcons.person_crop_circle, size: 30),
                     SizedBox(width: 10),
@@ -104,9 +135,9 @@ class UserPosted extends StatelessWidget {
                       ],
                     ),
                   ],
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ],
       ),

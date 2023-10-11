@@ -7,13 +7,28 @@ import 'package:instagram/src/presentation/home/components/user_story.dart';
 
 import 'components/user_posted.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: buildAppBar(),
+      body: Column(
+        children: [
+          buildUserStory(),
+          buildUserPosted(),
+        ],
+      ),
+    );
+  }
+
+  PreferredSizeWidget buildAppBar() => AppBar(
         title: Image.asset(
           AppImage.instagramText,
           width: 120,
@@ -32,72 +47,63 @@ class Home extends StatelessWidget {
             ),
           )
         ],
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: SizedBox(
-              height: 110,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  UserStory(
-                    userImage: AppImage.user1,
-                    userName: 'user 1',
-                  ),
-                  UserStory(
-                    userImage: AppImage.user2,
-                    userName: 'user 2',
-                  ),
-                  UserStory(
-                    userImage: AppImage.user3,
-                    userName: 'user 3',
-                  ),
-                  const UserStory(),
-                  const UserStory(),
-                ],
+      );
+
+  Widget buildUserStory() => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        child: SizedBox(
+          height: 110,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              UserStory(
+                userImage: AppImage.user1,
+                userName: 'user 1',
               ),
-            ),
+              UserStory(
+                userImage: AppImage.user2,
+                userName: 'user 2',
+              ),
+              UserStory(
+                userImage: AppImage.user3,
+                userName: 'user 3',
+              ),
+              const UserStory(),
+              const UserStory(),
+            ],
           ),
-          // const Divider(),
-          Expanded(
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                UserPosted(
-                  postedImage: AppImage.networkImage1,
-                  userImage: AppImage.user1,
-                  userName: 'user 1',
-                  userNickName: 't thong',
-                ),
-                UserPosted(
-                  postedImage: AppImage.networkImage2,
-                  userImage: AppImage.user2,
-                  userName: 'user 2',
-                  userNickName: 't thong',
-                ),
-                UserPosted(
-                  postedImage: AppImage.networkImage3,
-                  userImage: AppImage.user3,
-                  userName: 'user 3',
-                  userNickName: 't thong',
-                ),
-                UserPosted(
-                  postedImage: AppImage.networkImage4,
-                  userImage: AppImage.user4,
-                  userName: 'user 4',
-                  userNickName: 't thong',
-                ),
-              ],
+        ),
+      );
+
+  Widget buildUserPosted() => Expanded(
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            UserPosted(
+              postedImage: AppImage.networkImage1,
+              userImage: AppImage.user1,
+              userName: 'user 1',
+              userNickName: 't thong',
             ),
-          ),
-          // const Paragraph(
-          //   content: 'HOME',
-          //   fontSize: 70,
-          // ),
-        ],
-      ),
-    );
-  }
+            UserPosted(
+              postedImage: AppImage.networkImage2,
+              userImage: AppImage.user2,
+              userName: 'user 2',
+              userNickName: 't thong',
+            ),
+            UserPosted(
+              postedImage: AppImage.networkImage3,
+              userImage: AppImage.user3,
+              userName: 'user 3',
+              userNickName: 't thong',
+            ),
+            UserPosted(
+              postedImage: AppImage.networkImage4,
+              userImage: AppImage.user4,
+              userName: 'user 4',
+              userNickName: 't thong',
+            ),
+          ],
+        ),
+      );
 }
