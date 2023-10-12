@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Instagram',
       theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 151, 237, 154)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 124, 117, 160)),
         useMaterial3: true,
       ),
       home: const NavBar(),

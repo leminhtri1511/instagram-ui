@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram/src/presentation/gallery/gallery.dart';
-import 'package:instagram/src/presentation/home/home.dart';
-import 'package:instagram/src/presentation/profile/profile.dart';
-import 'package:instagram/src/presentation/reels/reels.dart';
-import 'package:instagram/src/presentation/search/search.dart';
+import 'package:instagram/src/presentation/nav_bar/gallery/gallery.dart';
+import 'package:instagram/src/presentation/nav_bar/home/home.dart';
+import 'package:instagram/src/presentation/nav_bar/profile/profile.dart';
+import 'package:instagram/src/presentation/nav_bar/reels/reels.dart';
+import 'package:instagram/src/presentation/nav_bar/search/search.dart';
 
 var screens = [
   const Home(),

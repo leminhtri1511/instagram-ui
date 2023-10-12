@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/src/config/text/paragraph.dart';
+import 'package:instagram/src/config/widgets/text/paragraph.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class Reels extends StatelessWidget {
+  const Reels({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
         child: Paragraph(
-          content: 'PROFILE',
+          content: 'REELS',
           fontSize: 70,
         ),
       ),

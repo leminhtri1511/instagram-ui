@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/src/config/constants/app_images.dart';
-import 'package:instagram/src/presentation/home/components/user_story.dart';
+import 'package:instagram/src/presentation/nav_bar/home/components/user_story.dart';
 
 import 'components/user_posted.dart';
 
@@ -27,6 +27,7 @@ class _HomeState extends State<Home> {
   }
 
   PreferredSizeWidget buildAppBar() => AppBar(
+        surfaceTintColor: Colors.transparent,
         title: Image.asset(
           AppImage.instagramText,
           width: 120,

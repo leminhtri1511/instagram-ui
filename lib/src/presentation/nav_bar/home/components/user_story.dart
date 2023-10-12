@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/src/config/constants/app_colors.dart';
 
-import 'package:instagram/src/config/text/paragraph.dart';
+import 'package:instagram/src/config/widgets/text/paragraph.dart';
 
 class UserStory extends StatelessWidget {
   const UserStory({

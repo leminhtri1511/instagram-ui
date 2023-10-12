@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/src/config/constants/app_colors.dart';
 
-import '../../../config/text/paragraph.dart';
+import '../../../../config/widgets/text/paragraph.dart';
 
 class OpenCamera extends StatefulWidget {
   const OpenCamera({

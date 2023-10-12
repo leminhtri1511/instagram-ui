@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:instagram/src/config/text/paragraph.dart';
+import 'package:instagram/src/config/widgets/text/paragraph.dart';
 
 class Gallery extends StatefulWidget {
   const Gallery({super.key});

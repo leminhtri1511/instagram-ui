@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/src/config/constants/app_colors.dart';
 import 'package:instagram/src/config/constants/app_images.dart';
-import 'package:instagram/src/config/text/paragraph.dart';
+import 'package:instagram/src/config/widgets/text/paragraph.dart';
 
 class UserPosted extends StatefulWidget {
   const UserPosted({

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:instagram/src/presentation/search/components/image_block.dart';
+
+
+import '../../../config/widgets/blocks/image_block.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});

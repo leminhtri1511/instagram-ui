@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/src/config/constants/app_images.dart';
-import 'package:instagram/src/config/text/paragraph.dart';
+import 'package:instagram/src/config/widgets/text/paragraph.dart';
 
 class AddStory extends StatelessWidget {
   const AddStory({super.key});
