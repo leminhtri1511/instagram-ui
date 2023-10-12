@@ -25,9 +25,16 @@ class UserPosted extends StatefulWidget {
 class _UserPostedState extends State<UserPosted> {
   bool isFavorite = false;
 
+  int count = 0;
+
   void toggleFavorite() {
     setState(() {
       isFavorite = !isFavorite;
+      if (isFavorite) {
+        count++;
+      } else {
+        count--;
+      }
     });
   }
 
@@ -42,16 +49,18 @@ class _UserPostedState extends State<UserPosted> {
             child: Row(
               children: [
                 CircleAvatar(
+                  backgroundColor: AppColors.white,
                   radius: 25,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                            widget.userImage ?? AppImage.imageNotFound),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                  child: widget.userImage == null
+                      ? const CircularProgressIndicator()
+                      : Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(widget.userImage!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                 ),
                 const SizedBox(width: 10),
                 Column(
@@ -72,27 +81,37 @@ class _UserPostedState extends State<UserPosted> {
               ],
             ),
           ),
-          GestureDetector(
-            onDoubleTap: toggleFavorite,
-            child: Container(
-              height: 400,
+          if (widget.postedImage == null)
+            const SizedBox(
+              height: 500,
               width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      widget.postedImage ?? AppImage.imageNotFound),
-                  fit: BoxFit.cover,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            )
+          else
+            GestureDetector(
+              onDoubleTap: toggleFavorite,
+              child: Container(
+                height: 500,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      widget.postedImage ?? AppImage.imageNotFound,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-          // const SizedBox(height: 7),
           Column(
             children: [
               Row(
                 children: [
                   IconButton(
-                    onPressed: toggleFavorite,
+                    onPressed:
+                        widget.postedImage == null ? () {} : toggleFavorite,
                     icon: isFavorite
                         ? Icon(
                             Icons.favorite_rounded,
@@ -112,12 +131,17 @@ class _UserPostedState extends State<UserPosted> {
                   const Icon(Icons.bookmark_border_rounded, size: 30)
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 13.0),
-                child: Row(
-                  children: [Paragraph(content: '999.999.999 likes')],
+              if (isFavorite)
+                Padding(
+                  padding: const EdgeInsets.only(left: 13.0),
+                  child: Row(
+                    children: [
+                      Paragraph(
+                        content: '$count likes',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
               const SizedBox(height: 5),
               const Padding(
                 padding: EdgeInsets.only(left: 9.0),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/src/config/constants/app_images.dart';
-import 'package:instagram/src/config/text/paragraph.dart';
-import 'package:instagram/src/presentation/home/components/add_story.dart';
 import 'package:instagram/src/presentation/home/components/user_story.dart';
 
 import 'components/user_posted.dart';
@@ -97,12 +95,7 @@ class _HomeState extends State<Home> {
               userName: 'user 3',
               userNickName: 't thong',
             ),
-            UserPosted(
-              postedImage: AppImage.networkImage4,
-              userImage: AppImage.user4,
-              userName: 'user 4',
-              userNickName: 't thong',
-            ),
+            const UserPosted(),
           ],
         ),
       );

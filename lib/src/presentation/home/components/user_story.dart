@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/src/config/constants/app_colors.dart';
-import 'package:instagram/src/config/constants/app_images.dart';
+
 import 'package:instagram/src/config/text/paragraph.dart';
 
 class UserStory extends StatelessWidget {
-  const UserStory({super.key, this.userImage, this.userName});
+  const UserStory({
+    super.key,
+    this.userImage,
+    this.userName,
+  });
 
   final String? userImage;
   final String? userName;
@@ -29,15 +33,18 @@ class UserStory extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(99)),
                 child: CircleAvatar(
+                  backgroundColor: AppColors.white,
                   radius: 37,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(userImage ?? AppImage.imageNotFound),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                  child: userImage == null
+                      ? const CircularProgressIndicator()
+                      : Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(userImage!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                 ),
               ),
             ),
